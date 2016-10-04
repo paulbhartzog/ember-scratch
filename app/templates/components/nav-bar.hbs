@@ -1,17 +1,31 @@
 <nav class="navbar navbar-inverse navbar-default">
   <div class="container-fluid">
+
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed"
       data-toggle="collapse" data-target="#navbar"
       aria-expanded="false" aria-controls="navbar">
       </button>
-      {{ link-to 'Home' 'index' class="navbar-brand" }}
+      {{link-to 'Home' 'index' class="navbar-brand"}}
     </div>
+
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="nav navbar-nav">
-        <li>{{ link-to 'About' 'about' }}</li>
-        <li>{{ link-to 'Contact' 'contact' }}</li>
+        <li>{{link-to "About" 'about' class='nav-item nav-link'}}</li>
+        <li>{{link-to "Contact" 'contact' class='nav-item nav-link'}}</li>
       </ul>
+
+      <button id="toggle" type="button" class="btn btn-default pull-right" {{action 'collapse'}}>
+        <span class="glyphicon glyphicon-book" aria-hidden="true"></span> Instructions
+      </button>
     </div>
+
+    <div id="instructions" class="panel-collapse collapse">
+     <div class="well">
+       <h2>Instructions</h2>
+       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+     </div>
+    </div>
+
   </div>
 </nav>

@@ -7,7 +7,9 @@ module.exports = function(defaults) {
     // Add options here
     sassOptions: {
       includePaths: [
-        'bower_components/bootstrap-sass/assets/stylesheets'
+        'bower_components/bootstrap-sass/assets/stylesheets',
+        'bower_components/bootstrap-sass/assets/javascripts',
+        'bower_components/bootstrap-sass/assets/fonts',
       ]
     }
   });
@@ -25,7 +27,14 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
+  // css
+  app.import(app.bowerDirectory + 'bower_components/bootstrap-sass/assets/stylesheets/bootstrap.css');
+  // js
   app.import('bower_components/bootstrap-sass/assets/javascripts/bootstrap.js');
+  // fonts
+  app.import(app.bowerDirectory + 'bower_components/bootstrap-sass/assets/fonts/glyphicons-halflings-regular.woff', {
+    destDir: 'fonts'
+  });
 
   // return
   return app.toTree();

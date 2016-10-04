@@ -9,4 +9,5 @@ test('visiting /about', function(assert) {
   andThen(function() {
     assert.equal(currentURL(), '/about');
   });
+
 });

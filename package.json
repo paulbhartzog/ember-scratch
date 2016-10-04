@@ -44,5 +44,7 @@
     "ember-welcome-page": "^1.0.1",
     "loader.js": "^4.0.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "ember-cli-sass": "^5.5.2"
+  }
 }

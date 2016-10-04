@@ -9,8 +9,7 @@ module.exports = function(defaults) {
       includePaths: [
         'bower_components/bootstrap-sass/assets/stylesheets',
         'bower_components/bootstrap-sass/assets/javascripts',
-        'bower_components/bootstrap-sass/assets/fonts',
-        'public/styles'
+        'bower_components/bootstrap-sass/assets/fonts'
       ]
     }
   });
@@ -29,15 +28,17 @@ module.exports = function(defaults) {
   // along with the exports of each module as its value.
 
   // css
-  app.import(app.bowerDirectory + 'bower_components/bootstrap-sass/assets/stylesheets/bootstrap.css');
+  //app.import('/bootstrap-sass/assets/stylesheets/_bootstrap.scss');
   // js
-  app.import('bower_components/bootstrap-sass/assets/javascripts/bootstrap.js');
+  //app.import('/bootstrap-sass/assets/javascripts/bootstrap.js');
   // fonts
-  app.import(app.bowerDirectory + 'bower_components/bootstrap-sass/assets/fonts/glyphicons-halflings-regular.woff', {
+  /*
+  app.import(app.bowerDirectory + '/bootstrap-sass/assets/fonts/glyphicons-halflings-regular.woff', {
     destDir: 'fonts'
   });
+  */
   // theme
-  app.import(app.bowerDirectory + 'public/styles/bootstrap.css');
+  //app.import(app.bowerDirectory + '/app/styles/bootstrap.min.css');
 
   // return
   return app.toTree();

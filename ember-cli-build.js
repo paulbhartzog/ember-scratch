@@ -10,6 +10,7 @@ module.exports = function(defaults) {
         'bower_components/bootstrap-sass/assets/stylesheets',
         'bower_components/bootstrap-sass/assets/javascripts',
         'bower_components/bootstrap-sass/assets/fonts',
+        'public/styles'
       ]
     }
   });
@@ -35,6 +36,8 @@ module.exports = function(defaults) {
   app.import(app.bowerDirectory + 'bower_components/bootstrap-sass/assets/fonts/glyphicons-halflings-regular.woff', {
     destDir: 'fonts'
   });
+  // theme
+  app.import(app.bowerDirectory + 'public/styles/bootstrap.css');
 
   // return
   return app.toTree();

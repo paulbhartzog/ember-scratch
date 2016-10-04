@@ -6,19 +6,12 @@ moduleForComponent('nav-bar', 'Integration | Component | nav bar', {
 });
 
 test('it renders', function(assert) {
+  assert.expect(0);
+
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
 
   this.render(hbs`{{nav-bar}}`);
+  //assert.equal(this.$().text().trim(), '');
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#nav-bar}}
-      template block text
-    {{/nav-bar}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
 });

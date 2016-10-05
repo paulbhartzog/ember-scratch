@@ -4,9 +4,9 @@
 @import "bootstrap/alerts";
 @import "bootstrap/buttons";
 
-
 $test-color: red;
 
 body {
-   margin:2em;
+  color:$test-color;
+  margin:2em;
 }

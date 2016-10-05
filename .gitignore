@@ -8,6 +8,13 @@
 /node_modules
 /bower_components
 
+# config
+.env
+.env.deploy
+.env.deploy.development
+.env.deploy.test
+.env.deploy.production
+
 # misc
 /.sass-cache
 /connect.lock

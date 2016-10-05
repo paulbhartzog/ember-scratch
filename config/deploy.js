@@ -1,18 +1,16 @@
 var VALID_DEPLOY_TARGETS = [ //update these to match what you call your deployment targets
   'dev',
-  'qa',
+  'test',
   'prod'
 ];
 
 module.exports = function(deployTarget) {
   var ENV = {
     build: {},
+    pipeline: {},
     redis: {
       allowOverwrite: true,
       keyPrefix: 'ember-scratch:index'
-    },
-    s3: {
-      prefix: 'ember-scratch'
     }
   };
   if (VALID_DEPLOY_TARGETS.indexOf(deployTarget) === -1) {
@@ -21,24 +19,24 @@ module.exports = function(deployTarget) {
 
   if (deployTarget === 'dev') {
     ENV.build.environment = 'development';
-    ENV.redis.url = process.env.REDIS_URL || 'redis://0.0.0.0:6379/';
+    ENV.redis.url = process.env.DEV_REDIS_URL;
+    ENV.pipeline.activateOnDeploy = true;
     ENV.plugins = ['build', 'redis']; // only care about deploying index.html into redis in dev
+    ENV.redis.revisionKey = 'development';
   }
 
-  if (deployTarget === 'qa' || deployTarget === 'prod') {
+  if (deployTarget === 'test' || deployTarget === 'prod') {
     ENV.build.environment = 'production';
-    ENV.s3.accessKeyId = process.env.AWS_KEY;
-    ENV.s3.secretAccessKey = process.env.AWS_SECRET;
-    ENV.s3.bucket = /* YOUR S3 BUCKET NAME */;
-    ENV.s3.region = /* YOUR S3 REGION */;
   }
 
-  if (deployTarget === 'qa') {
-    ENV.redis.url = process.env.QA_REDIS_URL;
+  if (deployTarget === 'test') {
+    ENV.redis.url = process.env.TEST_REDIS_URL;
+    ENV.redis.revisionKey = 'test';
   }
 
   if (deployTarget === 'prod') {
     ENV.redis.url = process.env.PROD_REDIS_URL;
+    ENV.redis.revisionKey = 'prod';
   }
 
   return ENV;

@@ -6,6 +6,7 @@ var VALID_DEPLOY_TARGETS = [ //update these to match what you call your deployme
 
 module.exports = function(deployTarget) {
   var ENV = {
+    defaultDeployTarget: 'dev',  //override prod here
     build: {},
     pipeline: {},
     redis: {
@@ -19,24 +20,28 @@ module.exports = function(deployTarget) {
 
   if (deployTarget === 'dev') {
     ENV.build.environment = 'development';
-    ENV.redis.url = process.env.DEV_REDIS_URL;
+    ENV.build.outputPath = 'built-dev';
     ENV.pipeline.activateOnDeploy = true;
-    ENV.plugins = ['build', 'redis']; // only care about deploying index.html into redis in dev
-    ENV.redis.revisionKey = 'development';
-  }
-
-  if (deployTarget === 'test' || deployTarget === 'prod') {
-    ENV.build.environment = 'production';
+    ENV.plugins = ['build'];
+    //ENV.redis.revisionKey = 'development';
   }
 
   if (deployTarget === 'test') {
-    ENV.redis.url = process.env.TEST_REDIS_URL;
-    ENV.redis.revisionKey = 'test';
+    ENV.build.environment = 'production';
+    ENV.build.outputPath = 'built-test';
+    ENV.pipeline.activateOnDeploy = true;
+    ENV.plugins = ['build'];
+    //ENV.redis.url = process.env.TEST_REDIS_URL;
+    //ENV.redis.revisionKey = 'test';
   }
 
   if (deployTarget === 'prod') {
-    ENV.redis.url = process.env.PROD_REDIS_URL;
-    ENV.redis.revisionKey = 'prod';
+    ENV.build.environment = 'production';
+    ENV.build.outputPath = 'built-prod';
+    ENV.pipeline.activateOnDeploy = true;
+    ENV.plugins = ['build'];
+    //ENV.redis.url = process.env.PROD_REDIS_URL;
+    //ENV.redis.revisionKey = 'prod';
   }
 
   return ENV;

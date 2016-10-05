@@ -6,7 +6,6 @@ var VALID_DEPLOY_TARGETS = [ //update these to match what you call your deployme
 
 module.exports = function(deployTarget) {
   var ENV = {
-    defaultDeployTarget: 'dev',  //override prod here
     build: {},
     pipeline: {},
     redis: {

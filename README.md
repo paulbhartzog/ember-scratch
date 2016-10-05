@@ -23,7 +23,7 @@ You will need the following things properly installed on your computer.
 ## Running / Development
 
 * `ember server`
-* Visit your app at [http://localhost:4201](http://localhost:4201).
+* Visit your app at localhost at the port listed in .ember-cli
 
 ### Code Generators
 
@@ -37,7 +37,7 @@ Make use of the many generators for code, try `ember help generate` for more det
 ### Building
 
 * `ember build` (development)
-* `ember build --environment production` (production)
+* `ember build --env production` (production)
 
 ## Further Reading / Useful Links
 
